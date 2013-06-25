@@ -1,0 +1,142 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>$title$</title>
+    
+    <meta name="author" content="Skydark Chen">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le styles -->
+    <link href="http://www.is.pku.edu.cn/~skydarkchen/assets/themes/twitter/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://www.is.pku.edu.cn/~skydarkchen/css/style.css?body=1" rel="stylesheet" type="text/css" media="all">
+    <link href="http://www.is.pku.edu.cn/~skydarkchen/css/syntax.css" rel="stylesheet" type="text/css" media="all">
+
+    <link rel="alternate" type="application/atom+xml" href="atom.xml" title="Atom feed">
+    <script type="text/javascript" src="http://www.is.pku.edu.cn/~skydarkchen/js/jquery.js"></script>
+    <script type="text/javascript" src="http://www.is.pku.edu.cn/~skydarkchen/js/bootstrap.min.js"></script>
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="http://www.is.pku.edu.cn/~skydarkchen/images/favicon.ico">
+    <!-- Update these with your own images
+    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="images/apple-touch-icon-114x114.png">
+  -->
+    
+      <script type="text/x-mathjax-config">
+	MathJax.Hub.Config({
+	  /*showProcessingMessages: false,*/
+	  jax: ["input/TeX", "output/HTML-CSS"],
+	  TeX: {
+		TagSide: "left",
+		Macros: {
+		  /*RR: '{\\bf R}',
+		  bold: ['{\\bf #1}',1]*/
+		  sdash: '{|\\!\\!\\!\\sim}'
+		}
+	  },
+	  tex2jax: {
+		  inlineMath: [ ['$$','$$'], ["\\(","\\)"] ],
+		  processEscapes: true
+	  }
+	});
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="http://www.is.pku.edu.cn/~skydarkchen/js/MathJax/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  </head>
+
+  <body>
+    <!--[if lt IE 8]><div style='border:1px solid #F7941D;background:#FEEFDA;text-align:center;clear:both;height:75px;position:relative;'><div style='position:absolute;right:3px;top:3px;font-family:courier new;font-weight:bold;'><a href='#' onclick='javascript:this.parentNode.parentNode.style.display="none";return false;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-cornerx.jpg' style='border:none;' alt='Close this notice'/></a></div><div style='width:640px;margin:0 auto;text-align:left;padding:0;overflow:hidden;color:black;'><div style='width:75px;float:left;'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-warning.jpg' alt='Warning!'/></div><div style='width:275px;float:left;font-family:Arial,sans-serif;'><div style='font-size:14px;font-weight:bold;margin-top:12px;'>You are using an outdated browser</div><div style='font-size:12px;margin-top:6px;line-height:12px;'>For a better experience using this site, please upgrade to a modern web browser.</div></div><div style='width:75px;float:left;'><a href='http://www.firefox.com' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-firefox.jpg' style='border:none;' alt='Get Firefox 3.5'/></a></div><div style='width:75px;float:left;'><a href='http://www.browserforthebetter.com/download.html' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-ie8.jpg' style='border:none;' alt='Get IE 8'/></a></div><div style='width:73px;float:left;'><a href='http://www.apple.com/safari/download/' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-safari.jpg' style='border:none;' alt='Get Safari 4'/></a></div><div style='float:left;'><a href='http://www.google.com/chrome' target='_blank'><img src='http://www.ie6nomore.com/files/theme/ie6nomore-chrome.jpg' style='border:none;' alt='Get Google Chrome'/></a></div></div></div><![endif]-->
+
+
+    <div class="navbar" id="top-navbar">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="http://www.is.pku.edu.cn/~skydarkchen">Skydark's Homepage</a>
+          <ul class="nav">
+    	<li><a href="http://www.is.pku.edu.cn/~skydarkchen/gists.html">Gists</a></li>
+    	<li><a href="http://www.is.pku.edu.cn/~skydarkchen/about.html">About</a></li>
+    	<li><a href="http://www.is.pku.edu.cn/~skydarkchen/archive.html">Archive</a></li>
+    	<li><a href="http://www.is.pku.edu.cn/~skydarkchen/pages.html">Pages</a></li>
+    	<li><a href="http://www.is.pku.edu.cn/~skydarkchen/categories.html">Categories</a></li>
+    	<li><a href="http://www.is.pku.edu.cn/~skydarkchen/tags.html">Tags</a></li>
+          </ul>
+          <ul class="nav subscription pull-right" data-subscription="rss">
+            <li>
+              <a href="http://www.is.pku.edu.cn/~skydarkchen/atom.xml" rel="nofollow" title="subscribe via RSS">RSS</a>
+            </li>
+          </ul>
+          <form class="navbar-search pull-right" method="get" action="http://www.google.com/search" target="google_window">
+            <label for="g_search" class="hidden"></label>
+            <input id="g_search" type="text" class="search-query" placeholder="Search..." name="q" />
+            <input type="submit" name=”btnG” style="display:none" id="searchsubmit" value="Search" />
+            <input type="hidden" name="ie" value="UTF-8" />
+            <input type="hidden" name="oe" value="UTF-8" />
+            <input type="hidden" name="hl" value="zh-CN" />
+            <input type="hidden" name="domains" value="http://www.is.pku.edu.cn" />
+            <input type="hidden" name="sitesearch" value="http://www.is.pku.edu.cn" />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+
+      <div id="main-content" class="content">
+
+<div class="page-header">
+  <h1>$title$<small></small></h1>
+</div>
+
+<div class="row">
+  <div class="span12">
+    $if(toc)$
+      <section>
+        <h2>Outline</h2>
+        <nav id="$idprefix$TOC">
+          $toc$
+        </nav>
+      </section>
+    $endif$
+
+    $body$
+  </div>
+</div>
+      </div>
+
+      <footer>
+        <p>&copy; Skydark Chen 2012 
+          with help from <a href="http://jekyllbootstrap.com" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll Bootstrap</a>
+          and <a href="http://twitter.github.com/bootstrap/" target="_blank">Twitter Bootstrap</a>
+        </p>
+      </footer>
+
+    </div> <!-- /container -->
+
+    
+    <script type="text/javascript" src="http://www.is.pku.edu.cn/~skydarkchen/js/sd.js"></script>
+  </body>
+</html>

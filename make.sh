@@ -34,7 +34,7 @@ LAST_OUT_FILE="$IN_DIR/$(basename "$IN_FILE")$OUT_EXT"
 cd "$OUT_DIR"
 
 cat "$IN_FILE" |\
-    sed "s|{{ BASE_PATH }}|${BASE_PATH_LOCAL}|g" |\
+    sed "s|{{ BASE_PATH }}|${BASE_PATH}|g" |\
     sed "s|{{ BASE_PATH_REMOTE }}|${BASE_PATH_REMOTE}|g" |\
     pandoc -f markdown -t json |\
     "$CUR_DIR/Filter" $OUT_FORMAT |\

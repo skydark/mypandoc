@@ -1,3 +1,3 @@
 # Rename this to config.yaml
-BASE_PATH_LOCAL  : /local/file/path
+BASE_PATH        : /local/file/path
 BASE_PATH_REMOTE : http://www.remote.url

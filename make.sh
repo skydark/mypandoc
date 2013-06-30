@@ -5,6 +5,7 @@ OUT_FORMAT='latex'
 
 IN_FILE="`realpath "$1"`"
 IN_DIR="$(realpath "$(dirname "$1")")"
+shift
 
 CUR_DIR="$(dirname "$(readlink -f "$0")")"
 OUT_DIR="$CUR_DIR/output"
@@ -12,6 +13,11 @@ OUT_DIR="$CUR_DIR/output"
 cd "$CUR_DIR"
 
 eval "`sed -e '/^#/d;s/:[^:\/\/]/="/g;s/$/"/g;s/ *=/=/g' config.yaml`"
+
+if [ x"$1" != x"" ]; then
+    OUT_FORMAT="$1"
+    shift
+fi
 
 # `: ${A:=hello}` is a shortcut in bash for `A=${A:-hello}`
 if [ x"$OUT_FORMAT" = x"html" ]; then
@@ -31,6 +37,8 @@ else
     echo "Unknown output format!"
     exit 1
 fi
+
+OUT_OPTIONS+=( $@ )
 : ${TEMPLATE:="$CUR_DIR/template/default.$OUT_FORMAT"}
 : ${OUT_FILE:="$OUT_DIR/output$OUT_EXT"}
 LAST_OUT_FILE="$IN_DIR/$(basename "$IN_FILE")$OUT_EXT"

@@ -23,6 +23,10 @@ elif [ x"$OUT_FORMAT" = x"latex" ]; then
     : ${OUT_EXT:='.tex'}
     : ${POST_PROCESS:='xelatex'}
     OUT_OPTIONS=( -V 'cjk=yes' )
+elif [ x"$OUT_FORMAT" = x"beamer" ]; then
+    : ${OUT_EXT:='.tex'}
+    : ${POST_PROCESS:='xelatex'}
+    OUT_OPTIONS=( -V 'cjk=yes' )
 else
     echo "Unknown output format!"
     exit 1

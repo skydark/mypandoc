@@ -56,8 +56,8 @@ doEnv format cb@(CodeBlock (id, classes, namevals) contents) =
                         "\\begin{" ++ env ++ "}",
                         "\n\\end{" ++ env ++ "}\n",
                         concat [
-                                ifNull name "" "[" ++ name ++ "]",
-                                ifNull id "" "\\label{" ++ id ++ "}",
+                                ifNull name "" ("[" ++ name ++ "]"),
+                                ifNull id "" ("\\label{" ++ id ++ "}"),
                         "\n"],
                         writeLaTeX
                         )

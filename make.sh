@@ -20,6 +20,7 @@ if [ x"$1" != x"" ]; then
 fi
 
 OUT_FORMAT_PANDOC="$OUT_FORMAT"
+OUT_FORMAT_FILTER="$OUT_FORMAT"
 # `: ${A:=hello}` is a shortcut in bash for `A=${A:-hello}`
 if [ x"$OUT_FORMAT" = x"html" ]; then
     : ${OUT_EXT:='.html'}
@@ -33,6 +34,7 @@ elif [ x"$OUT_FORMAT" = x"latex" ]; then
 elif [ x"$OUT_FORMAT" = x"beamer" ]; then
     : ${OUT_EXT:='.tex'}
     : ${POST_PROCESS:='xelatex'}
+    OUT_FORMAT_FILTER='latex'
     OUT_OPTIONS=( -V 'cjk=yes' )
 elif [ x"$OUT_FORMAT" = x"revealjs" ]; then
     : ${OUT_EXT:='.html'}
@@ -55,7 +57,7 @@ cat "$IN_FILE" |\
     sed "s|{{ BASE_PATH }}|${BASE_PATH}|g" |\
     sed "s|{{ BASE_PATH_REMOTE }}|${BASE_PATH_REMOTE}|g" |\
     pandoc -f markdown -t json |\
-    "$CUR_DIR/Filter" $OUT_FORMAT |\
+    "$CUR_DIR/Filter" $OUT_FORMAT_FILTER |\
     pandoc -f json -t $OUT_FORMAT_PANDOC --template="$TEMPLATE" -o "$OUT_FILE" "${OUT_OPTIONS[@]}" &&\
     "$POST_PROCESS" "$OUT_FILE" # && cp "$OUT_FILE" "$LAST_OUT_FILE"
 

@@ -1,3 +1,4 @@
+% !Mode:: "TeX:UTF-8"
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$]{$documentclass$}
 $if(theme)$
 \usetheme{$theme$}
@@ -16,7 +17,7 @@ $endif$
 \usepackage{fixltx2e} % provides \textsubscript
 \ifxetex
   \usepackage{fontspec,xltxtra,xunicode}
-  \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  % \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
 
   $if(cjk)$
   \XeTeXlinebreaklocale "zh"

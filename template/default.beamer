@@ -156,6 +156,13 @@ $if(cjk)$
 \begin{CJK*}{UTF8}{song}
 $endif$
 \fi
+\newtheorem{cthm}{定理~}[section]
+\newtheorem{cdfn}[cthm]{定义~}
+\newtheorem{cprop}[cthm]{命题~}
+\newtheorem{crmk}[cthm]{注~}
+\newtheorem{cex}[cthm]{例~}
+\newtheorem{cinf}[cthm]{推论~}
+\newtheorem{ccor}[cthm]{推论~}
 
 $if(title)$
 \frame{\titlepage}

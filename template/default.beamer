@@ -1,5 +1,12 @@
 % !Mode:: "TeX:UTF-8"
-\documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$]{$documentclass$}
+\documentclass[$if(fontsize)$$fontsize$,$endif$$if(handout)$handout,$endif$CJKutf8,mathserif,fleqn]{$documentclass$}
+
+\usepackage{beamerthemesplit}
+\usepackage{beamerthemeshadow}
+
+\usecolortheme{orchid}
+%\defbeamertemplate*{headline}{infolines theme}{}
+
 $if(theme)$
 \usetheme{$theme$}
 $endif$
@@ -7,6 +14,8 @@ $if(colortheme)$
 \usecolortheme{$colortheme$}
 $endif$
 \usepackage{amssymb,amsmath}
+\usepackage{color}
+\usepackage{fancyvrb}
 \usepackage{ifxetex,ifluatex}
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   $if(cjk)$
@@ -17,17 +26,22 @@ $endif$
 \usepackage{fixltx2e} % provides \textsubscript
 \ifxetex
   \usepackage{fontspec,xltxtra,xunicode}
-  % \defaultfontfeatures{Mapping=tex-text,Scale=MatchLowercase}
+  \defaultfontfeatures{Mapping=tex-text}
 
   $if(cjk)$
   \XeTeXlinebreaklocale "zh"
   \XeTeXlinebreakskip = 0pt plus 1pt minus 0.1pt
   \usepackage[BoldFont,SlantFont,CJKchecksingle]{xeCJK}
   \setCJKmainfont[BoldFont={SimHei},ItalicFont={楷体_GB2312}]{SimSun}   % 设置缺省中文字体
-  \setCJKmonofont{黑体}   % 设置等宽字体
-  \setmainfont[BoldFont={黑体}]{宋体}
+  \setCJKsansfont[BoldFont={SimHei}]{WenQuanYi Micro Hei}
+  \setCJKmonofont{仿宋_GB2312}
+  %\setCJKmainfont[BoldFont={WenQuanYi Micro Hei},ItalicFont={楷体_GB2312}]{方正准圆_GBK}   % 设置缺省中文字体
+  %\setCJKmonofont{WenQuanYi Micro Hei}   % 设置等宽字体
+  %\setCJKsansfont{方正准圆_GBK}  % 文泉驿的黑体
+  \setmainfont[BoldFont={WenQuanYi Zen Hei}]{Droid Sans Fallback}
   \setmonofont{Monaco}   % 英文等宽字体
-  \setsansfont{黑体}
+  %\setsansfont{方正准圆_GBK}  % 文泉驿的黑体
+  \setsansfont{Droid Sans} % 英文无衬线字体
   $endif$
 
 \else
@@ -109,12 +123,12 @@ $endif$
 \AtBeginSection{
   \let\insertsectionnumber\relax
   \let\sectionname\relax
-  \frame{\sectionpage}
+  %\frame{\sectionpage}
 }
 \AtBeginSubsection{
   \let\insertsubsectionnumber\relax
   \let\subsectionname\relax
-  \frame{\subsectionpage}
+  %\frame{\subsectionpage}
 }
 
 $if(strikeout)$
@@ -149,6 +163,8 @@ $if(date)$
 \date{$date$}
 $endif$
 
+% \setbeamertemplate{theorems}[numbered]
+
 \begin{document}
 
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
@@ -163,6 +179,12 @@ $endif$
 \newtheorem{cex}[cthm]{例~}
 \newtheorem{cinf}[cthm]{推论~}
 \newtheorem{ccor}[cthm]{推论~}
+
+\newcommand{\tm}[1]{\textrm{#1}}
+
+%\definecolor{Emph}{rgb}{1,0,0}  %red
+\definecolor{Emph}{rgb}{0.8,0.2,0.2}  %softer red for display
+\renewcommand{\emph}[1]{\textcolor{Emph}{\bf\textit{#1}}}
 
 $if(title)$
 \frame{\titlepage}

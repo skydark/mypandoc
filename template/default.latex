@@ -33,8 +33,10 @@ $endif$
     % \setCJKsansfont{Adobe Kaiti Std}
     % \punctstyle{quanjiao}
     \setCJKmainfont[BoldFont={SimHei},ItalicFont={楷体_GB2312}]{SimSun}   % 设置缺省中文字体
+    \setCJKsansfont[BoldFont={SimHei}]{WenQuanYi Micro Hei}
     \setCJKmonofont{黑体}   % 设置等宽字体
-    \setmainfont[BoldFont={黑体}]{宋体}
+    \setmainfont[BoldFont={WenQuanYi Zen Hei}]{Droid Sans Fallback}
+    %\setmainfont[BoldFont={黑体}]{宋体}
     \setmonofont{Monaco}   % 英文等宽字体
     \setsansfont{Droid Sans} % 英文无衬线字体
     $endif$
@@ -146,9 +148,9 @@ $if(lang)$
   \setmainlanguage{$mainlang$}
 
   \usepackage[BoldFont,SlantFont,CJKchecksingle]{xeCJK}
-  \setCJKmainfont{Adobe Song Std}
-  \setCJKsansfont{Adobe Kaiti Std}
-  \setCJKmonofont{Adobe Fangsong Std}
+  % \setCJKmainfont{Adobe Song Std}
+  % \setCJKsansfont{Adobe Kaiti Std}
+  % \setCJKmonofont{Adobe Fangsong Std}
   \punctstyle{quanjiao}
 
 \else

@@ -33,7 +33,7 @@ doInclude cb@(CodeBlock (id, classes, namevals) contents) =
     Nothing  -> return cb
 doInclude x = return x
 
--- ~~~ {env=theorem name=Thm1 #ref}
+-- ~~~ {env=theorem name=Thm1 desc=Desc #ref}
 -- This is a *theorem*! $blah^{blah}$
 -- ~~~
 doEnv :: String -> Block -> Block
@@ -50,6 +50,7 @@ doEnv format cb@(CodeBlock (id, classes, namevals) contents) =
                                       env_wrapper_footer
                                       ]
                name = fromMaybe "" $ lookup "name" namevals
+               desc = fromMaybe "" $ lookup "desc" namevals
                (env_wrapper_header, env_wrapper_footer, env_header, writer) =
                  case format of
                    "latex" -> (
@@ -57,6 +58,7 @@ doEnv format cb@(CodeBlock (id, classes, namevals) contents) =
                         "\n\\end{" ++ env ++ "}\n",
                         concat [
                                 ifNull name "" ("[" ++ name ++ "]"),
+                                ifNull desc "" ("{" ++ desc ++ "}"),
                                 ifNull id "" ("\\label{" ++ id ++ "}"),
                         "\n"],
                         writeLaTeX
@@ -69,7 +71,7 @@ doEnv format cb@(CodeBlock (id, classes, namevals) contents) =
                                 ">\n"
                                 ],
                         "\n</div>\n",
-                        "<span class='env-header'>" ++ name ++ "</span>\n",
+                        "<span class='env-header'>" ++ name ++ desc ++ "</span>\n",
                         writeHtmlString
                         )
 doEnv _ x = x

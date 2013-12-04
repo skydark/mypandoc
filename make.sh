@@ -24,6 +24,7 @@ cd "$CUR_DIR"
 source config.sh
 if [ "$1" ] ; then
     PROFILE="$1"
+    shift
 else
     : ${PROFILE:="$DEFAULT_PROFILE"}
 fi

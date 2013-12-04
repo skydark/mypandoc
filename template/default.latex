@@ -1,7 +1,7 @@
 % !Mode:: "TeX:UTF-8"
 \documentclass[$if(fontsize)$$fontsize$,$endif$$if(lang)$$lang$,$endif$$if(papersize)$$papersize$,$endif$]{$documentclass$}
 \usepackage{lmodern}
-\usepackage{amssymb,amsmath}
+\usepackage{amssymb,amsmath,amsthm}
 \usepackage{ifxetex,ifluatex}
 \usepackage{fixltx2e} % provides \textsubscript
 % use upquote if available, for straight quotes in verbatim environments
@@ -181,6 +181,13 @@ $endif$
 \newtheorem{cex}[cthm]{例~}
 \newtheorem{cinf}[cthm]{推论~}
 \newtheorem{ccor}[cthm]{推论~}
+
+\newcommand{\tm}[1]{\textrm{#1}}
+
+%\definecolor{Emph}{rgb}{1,0,0}  %red
+\definecolor{Emph}{rgb}{0.8,0.2,0.2}  %softer red for display
+\renewcommand{\emph}[1]{\textcolor{Emph}{\bf\textit{#1}}}
+
 
 $if(title)$
 \maketitle

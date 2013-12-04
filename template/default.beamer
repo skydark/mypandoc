@@ -5,7 +5,7 @@
 \usepackage{beamerthemeshadow}
 
 \usecolortheme{orchid}
-%\defbeamertemplate*{headline}{infolines theme}{}
+\defbeamertemplate*{headline}{infolines theme}{}
 
 $if(theme)$
 \usetheme{$theme$}
@@ -123,7 +123,7 @@ $endif$
 \AtBeginSection{
   \let\insertsectionnumber\relax
   \let\sectionname\relax
-  %\frame{\sectionpage}
+  \frame{\sectionpage}
 }
 \AtBeginSubsection{
   \let\insertsubsectionnumber\relax

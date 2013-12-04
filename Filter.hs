@@ -9,7 +9,8 @@ import Data.Maybe
 import Data.ByteString.Lazy.UTF8 (fromString)
 -- from the SHA package on HackageDB:
 import Data.Digest.Pure.SHA
-import Text.JSON.Generic
+{- import Text.JSON.Generic -}
+import Text.Pandoc.JSON
 
 (|>) x y = y x
 (>>|) x y = x >>= return . y
@@ -36,11 +37,11 @@ doInclude x = return x
 -- ~~~ {env=theorem name=Thm1 desc=Desc #ref}
 -- This is a *theorem*! $blah^{blah}$
 -- ~~~
-doEnv :: String -> Block -> Block
+doEnv :: Format -> Block -> Block
 doEnv format cb@(CodeBlock (id, classes, namevals) contents) =
   case (format, lookup "env" namevals) of
       (_, Nothing)  -> cb
-      (f, _) | not $ f `elem` ["latex", "html"]
+      (Format f, _) | not $ f `elem` ["latex", "html"]
                     -> cb
       (_, Just env) -> RawBlock format new_contents
          where new_contents = concat [
@@ -53,7 +54,7 @@ doEnv format cb@(CodeBlock (id, classes, namevals) contents) =
                desc = fromMaybe "" $ lookup "desc" namevals
                (env_wrapper_header, env_wrapper_footer, env_header, writer) =
                  case format of
-                   "latex" -> (
+                   Format "latex" -> (
                         "\\begin{" ++ env ++ "}",
                         "\n\\end{" ++ env ++ "}\n",
                         concat [
@@ -63,7 +64,7 @@ doEnv format cb@(CodeBlock (id, classes, namevals) contents) =
                         "\n"],
                         writeLaTeX
                         )
-                   "html"  -> (
+                   Format "html"  -> (
                         concat ["<div class='", env, " ",
                                 concat $ intersperse " " classes,
                                 "' ",
@@ -94,11 +95,11 @@ doDot x = return x
 -- [](#ref)
 -- In LaTeX: `\ref{ref}`, not `\hyperref[ref]{}`
 
-doEmptyLink :: String -> Inline -> Inline
+doEmptyLink :: Format -> Inline -> Inline
 doEmptyLink format l@(Link [] ('#':ref,_)) =
     case format of
-        "latex" -> RawInline "latex" $ "\\ref{" ++ ref ++ "}"
-        "html"  -> l
+        Format "latex" -> RawInline format $ "\\ref{" ++ ref ++ "}"
+        Format "html"  -> l
         _       -> l
 doEmptyLink _ x = x
 
@@ -109,10 +110,11 @@ main = do
     let format = case args of
                     [f] -> f
                     _   -> "html"   -- default
-    getContents
-        >>| (decodeJSON :: String -> Pandoc)
+    toJSONFilter (doAll (Format format))
+
+doAll :: Format -> Pandoc -> IO Pandoc
+doAll format pandoc = return pandoc
         >>| bottomUp (doEnv format)
         >>| bottomUp (doEmptyLink format)
         >>= bottomUpM doDot
         >>= bottomUpM doInclude
-        >>= putStr . encodeJSON
